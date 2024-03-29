@@ -1,21 +1,26 @@
-name: Nodejs CICD
+name: Node.js CI
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  print-hello-world:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
       
-      - name: Install Dependencies
-        run: npm install
-        
-      - name: Run Tests
-        run: npm test
-        
-      - name: Lint Code
-        run: npm run lint
+    - name: Install Dependencies
+      run: npm install
+      
+    - name: Run Tests
+      run: npm test
+      
+    - name: Lint Code
+      run: npm run lint
