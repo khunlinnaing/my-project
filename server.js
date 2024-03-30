@@ -8,6 +8,9 @@ app.get('/', (req, res) =>{
         message: 'Hello world'
     })
 });
+app.post('/', (req, res) =>{
+    return res.send('Hello world');
+});
 app.listen(8000,() =>{
     console.log('server is running on port 8000');
 })
